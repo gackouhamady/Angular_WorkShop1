@@ -1,0 +1,32 @@
+<h2>Liste des produits </h2>
+<form action="">
+    <div class="form-group">
+        <label >Search:</label>
+        <input type="number" name="prix" class="form-control" [(ngModel)]="prixMax">
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+        <th>id</th>
+        <th>titre</th>
+        <th>prix</th>
+        <th>quantite</th>
+        <th>like</th>
+        </tr>
+    </thead>
+
+    <tbody *ngFor="let product of ProductList; let i=index">
+
+        <tr *ngIf=" product.prix<prixMax || prixMax=null" >
+            <td>{{product.id}}</td>
+            <td>{{product.titre}}</td>
+            <td>{{product.prix}}</td>
+            <td>{{product.quantite}}</td>
+            <td>{{product.like}}</td>
+            <td><button class="'btn btn-warning"  [disabled]="product.quantite==0" (click)=" byProdut(i)" >like</button></td>
+            <td><button class="btn btn-success">By</button></td>
+        </tr>
+
+    </tbody>
+</table>
